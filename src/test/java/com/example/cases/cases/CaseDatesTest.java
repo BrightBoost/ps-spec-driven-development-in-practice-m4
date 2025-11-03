@@ -15,6 +15,11 @@ class CaseDatesTest {
     }
 
     @Test
+    void acceptsSingleDigitDayAndMonth() {
+        assertThat(CaseDates.parse("5-3-2025")).isEqualTo(LocalDate.of(2025, 3, 5));
+    }
+
+    @Test
     void formatsWithLeadingZeros() {
         assertThat(CaseDates.format(LocalDate.of(2025, 3, 5))).isEqualTo("05-03-2025");
     }

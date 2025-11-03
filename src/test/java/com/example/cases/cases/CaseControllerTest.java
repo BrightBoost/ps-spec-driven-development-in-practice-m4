@@ -53,7 +53,7 @@ class CaseControllerTest {
     @Test
     void createCaseReturns201WithNormalizedDate() {
         HttpResponse<String> response = http.post("/cases", """
-                {"title": "Board minutes review", "ownerEmail": "joost@example.com", "openedOn": "05-10-2026"}
+                {"title": "Board minutes review", "ownerEmail": "joost@example.com", "openedOn": "5-10-2026"}
                 """);
 
         assertThat(response.statusCode()).isEqualTo(201);
