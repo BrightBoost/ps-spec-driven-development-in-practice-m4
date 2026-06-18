@@ -40,6 +40,13 @@ class CaseListingTest {
     }
 
     @Test
+    void casesAreListedNewestFirst() {
+        List<Integer> ids = JsonPath.read(http.get("/cases").body(), "$[*].id");
+
+        assertThat(ids).containsSubsequence(4, 2, 1);
+    }
+
+    @Test
     void listedDatesUseDayMonthYear() {
         List<String> dates = JsonPath.read(http.get("/cases").body(), "$[*].openedOn");
 

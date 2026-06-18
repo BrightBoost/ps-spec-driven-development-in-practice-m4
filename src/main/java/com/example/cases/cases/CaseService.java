@@ -1,5 +1,6 @@
 package com.example.cases.cases;
 
+import java.util.Comparator;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
@@ -19,6 +20,7 @@ public class CaseService {
     public List<CaseRecord> listCases() {
         return repository.findAll().stream()
                 .filter(c -> !c.deleted())
+                .sorted(Comparator.comparing((CaseRecord c) -> CaseDates.parse(c.openedOn())).reversed())
                 .toList();
     }
 
