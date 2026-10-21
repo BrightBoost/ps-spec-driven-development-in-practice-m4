@@ -11,3 +11,10 @@ CREATE TABLE legal_case (
     status      VARCHAR(20)  NOT NULL,
     deleted     BOOLEAN      NOT NULL DEFAULT FALSE
 );
+
+CREATE TABLE filing_obligation (
+    id                 BIGINT AUTO_INCREMENT PRIMARY KEY,
+    case_id            BIGINT      NOT NULL REFERENCES legal_case (id),
+    due_date           VARCHAR(10) NOT NULL,  -- dd-MM-yyyy
+    effective_due_date VARCHAR(10) NOT NULL   -- dd-MM-yyyy
+);
